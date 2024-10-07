@@ -1,31 +1,29 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-
-    double v;
-    int n[] = {100, 50, 20, 10, 5, 2};
-    double c[] = {1, 0.5, 0.25, 0.1, 0.05, 0.01};
-
-    cin >> v;
+int main() {
+    float x;
+    cin >> x;
 
     cout << "NOTAS:" << endl;
 
-    for(int i = 0; i < 6; i++){
-        int count = v/n[i];
-        cout << count << " nota(s) de R$ " << n[i] << ".00" << endl;
-        v -= count*n[i];
+    int y = x*100;
 
+    int notes[] = {10000, 5000, 2000, 1000, 500, 200};
+    
+    for (int i = 0; i < 6; ++i) {
+        cout << int(y / notes[i]) << " nota(s) de R$ " << notes[i]/100 << ".00" << endl;
+        y %= notes[i];
     }
 
-    cout << "MOEDA:" << endl;
+    cout << "MOEDAS:" << endl;
 
-    for(int i=0; i < 6; i++){
-        int count = v/c[i];
-        cout << count << " moeda(s) de R$ " << c[i] << endl;
-        v -= count*c[i];
+    int moedas[] = {100, 50, 25, 10, 5, 1};
+    
+    for (int i = 0; i < 6; ++i) {
+        cout << int(y / moedas[i]) << " moeda(s) de R$ " << fixed << setprecision(2) << float(moedas[i]/100.00) << endl;
+        y %= moedas[i];
     }
-
 
     return 0;
 }
